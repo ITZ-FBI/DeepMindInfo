@@ -3,7 +3,7 @@
 Welcome to **DeepMindInfo**, your ultimate AI-powered tech hub for exploring **AI Tools, Cars, Games, and Gadgets**. This website is optimized for **smooth performance and mobile responsiveness**, ensuring the best user experience on all devices.
 
 ## 🌐 Live Website
-You can access the website here: **[https://YOUR-USERNAME.github.io/DeepMindInfo/](https://YOUR-USERNAME.github.io/DeepMindInfo/)**
+You can access the website here: **[https://jocular-ganache-c45eca.netlify.app/](https://jocular-ganache-c45eca.netlify.app/)**
 
 ## 📌 Features
 ✅ Fully responsive (desktop & mobile)
