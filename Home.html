@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="DeepMindInfo - Your AI-powered hub for Cars, Games, AI Tools, and Gadgets.">
+    <title>DeepMindInfo | AI-Powered Tech Hub</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: black;
+            color: white;
+            overflow-x: hidden;
+            overflow-y: auto;
+            position: relative;
+        }
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            max-height: 100vh;
+            z-index: -1;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            flex-wrap: wrap;
+        }
+        nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease-in-out;
+            border: 2px solid white;
+        }
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+            color: cyan;
+        }
+        .search-container {
+            width: 50%;
+            text-align: center;
+            margin: 40px auto;
+            position: relative;
+            animation: fadeIn 1s ease-in-out;
+            z-index: 1;
+        }
+        @media (max-width: 768px) {
+            .search-container {
+                width: 90%;
+            }
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+        .search-bar {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border-radius: 25px;
+            border: 2px solid white;
+            outline: none;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-align: center;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease-in-out;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 60vh;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="starsCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById("starsCanvas");
+        const ctx = canvas.getContext("2d");
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener("resize", resizeCanvas);
+        
+        let stars = [];
+        function createStars() {
+            stars = [];
+            for (let i = 0; i < 300; i++) {
+                stars.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    radius: Math.random() * 2,
+                    speed: Math.random() * 0.5 + 0.1
+                });
+            }
+        }
+        createStars();
+        
+        function animateStars() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = "white";
+            for (let star of stars) {
+                ctx.beginPath();
+                ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+                ctx.fill();
+                star.y += star.speed;
+                if (star.y > canvas.height) {
+                    star.y = -star.radius;
+                    star.x = Math.random() * canvas.width;
+                }
+            }
+            requestAnimationFrame(animateStars);
+        }
+        animateStars();
+    </script>
+    <header>
+        <h1>DeepMindInfo</h1>
+        <nav>
+            <ul>
+                <li><a href="Home.html">Home</a></li>
+                <li><a href="Car page.html">Cars</a></li>
+                <li><a href="Game page.html">Games</a></li>
+                <li><a href="AI Tools.html">AI Tools</a></li>
+                <li><a href="Gadgets.html">Gadgets</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <div class="search-container">
+        <input type="text" id="searchInput" class="search-bar" placeholder="Search for topics...">
+    </div>
+    
+    <section id="home" class="hero">
+        <h2>Welcome to DeepMindInfo</h2>
+        <p>Your AI-powered hub for Cars, Games, AI Tools, and Gadgets.</p>
+    </section>
+    
+    <footer>
+        <p>© 2024 DeepMindInfo. All rights reserved.</p>
+    </footer>
+</body>
+</html>
